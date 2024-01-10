@@ -1,0 +1,33 @@
+# .gitignore
+
+# Ignore virtual environment
+venv/
+
+# Ignore database files
+db.sqlite3
+
+# Ignore static files
+static/
+
+# Ignore media files
+media/
+
+# Ignore local settings (customize based on your actual settings file)
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Ignore environment-specific settings
+.env
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore migrations
+/account/migrations/
