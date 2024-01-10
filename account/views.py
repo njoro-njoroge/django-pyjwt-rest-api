@@ -3,10 +3,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.utils import timezone
 from rest_framework.exceptions import AuthenticationFailed
-from rest_framework.permissions import IsAuthenticated
-from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework_simplejwt.tokens import AccessToken
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenVerifyView
+from rest_framework.decorators import authentication_classes, permission_classes
+from django.db import transaction
 
 from .serializers import UserSerializer, StoreNameSerializer
 from .models import User, Store
@@ -100,8 +98,11 @@ class UserView(APIView):
         return Response(serializer.data)
 
 
+@authentication_classes([])
+@permission_classes([])
 class StoreNameView(APIView):
 
+    @transaction.atomic
     def post(self, request):
         store_name = request.data.get('store_name')
 
